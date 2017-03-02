@@ -28,7 +28,8 @@ var api = new ParseServer({
       pfx: 'OrcaPushDev.p12',
       bundleId: 'com.alexli.Orka',
       production: false
-    }
+     }
+    ]
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
