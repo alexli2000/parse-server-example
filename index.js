@@ -20,8 +20,7 @@ var api = new ParseServer({
   push: {
     ios: {
       pfx: 'OrcaPushProd.p12',
-      passphrase: '', // optional password to your p12/PFX
-      bundleId: '',
+      bundleId: 'com.alexli.Orka',
       production: true
     }
   }
