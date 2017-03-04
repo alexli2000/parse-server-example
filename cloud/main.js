@@ -14,17 +14,17 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
     //var customData = params.customData;
 
     Parse.Push.send({
-  channels: ['global'],
-  data: {
-    alert: message,
-    badge: 'increment',
-    sound: 'default'
-  }
-}, { useMasterKey: true }).then(() => {
-  console.log('Push ok');
-}, (e) => {
-  console.log('Push error', e);
-});
+      channels: ['global'],
+      data: {
+        alert: message,
+        badge: 'increment',
+        sound: 'default'
+      }
+    }, { useMasterKey: true }).then(() => {
+      console.log('Push ok');
+    }, (e) => {
+      console.log('Push error', e);
+    });
 
-    response.success('success');
+    res.success('success');
 });
