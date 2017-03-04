@@ -19,7 +19,7 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
 
     var payload = {
       "channels": [
-                "Mets"
+                "global"
               ],
       "data": {
         "alert": message,
