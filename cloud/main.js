@@ -18,10 +18,12 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
         alert: 'test-message'
       }
     }, { useMasterKey: true }).then(() => {
+
+          res.success('success');
       console.log('Push ok');
     }, (e) => {
       console.log('Push error', e);
+      
+          res.success('success');
     });
-
-    res.success('success');
 });
