@@ -6,16 +6,15 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
   // request has 2 parameters: params passed by the client and the authorized user
     var params = req.params;
     //var user = request.user;
-    console.log(1);
-    // extract out the channel to send
-    //var action = params.action;
+
     var message = params.message;
+    var channel = params.channel;
     //var customData = params.customData;
 
     Parse.Push.send({
-      channels: ['global'],
+      channels: [channel],
       data: {
-        alert: 'test-message'
+        alert: message,
       }
     }, { useMasterKey: true }).then(() => {
       res.success('Sent message');
