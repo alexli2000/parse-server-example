@@ -1,4 +1,3 @@
-
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi');
 });
@@ -16,9 +15,7 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
     Parse.Push.send({
       channels: ['global'],
       data: {
-        alert: message,
-        badge: 'increment',
-        sound: 'default'
+        alert: 'test-message'
       }
     }, { useMasterKey: true }).then(() => {
       console.log('Push ok');
