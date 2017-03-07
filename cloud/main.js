@@ -9,12 +9,13 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
 
     var message = params.message;
     var channel = params.channel;
-    //var customData = params.customData;
+    var pushType = params.type;
 
     Parse.Push.send({
       channels: [channel],
       data: {
         alert: message,
+        type: pushType
       }
     }, { useMasterKey: true }).then(() => {
       res.success('Sent message');
