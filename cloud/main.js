@@ -6,7 +6,7 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
   // request has 2 parameters: params passed by the client and the authorized user
     var params = req.params;
     //var user = request.user;
-
+    var title = params.title;
     var message = params.message;
     var channel = params.channel;
     var pushType = params.type;
@@ -18,7 +18,10 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
     Parse.Push.send({
       where: query,
       data: {
-        alert: message,
+        alert: {
+          title: title,
+          body: message
+        }
         type: pushType,
         objectId: channel
       }
