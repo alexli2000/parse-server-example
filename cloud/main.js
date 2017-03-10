@@ -21,7 +21,7 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
         alert: {
           title: title,
           body: message
-        }
+        },
         type: pushType,
         objectId: channel
       }
