@@ -20,10 +20,10 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
       data: {
         alert: {
           title: title,
-          body: message
-        },
-        type: pushType,
-        objectId: channel
+          body: message,
+          type: pushType,
+          objectId: channel
+        }
       }
     }, { useMasterKey: true }).then(() => {
       res.success('Sent message');
