@@ -28,7 +28,32 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
       }
     }, { useMasterKey: true }).then(() => {
       res.success('Sent message');
-    }, (e) => {
-      res.error("Push failed to send with error: " + e.message);
+    }, (error) => {
+      res.error("Push failed to send push with error: " + error.message);
     });
+});
+
+Parse.Cloud.define('addChannel', function(req, res) {
+    var params = req.params;
+    var channelId = params.channelId;
+    var userId = params.userId;
+
+    var user = new Parse.User();
+    user.id = userId;
+
+    var query = new Parse.Query(Parse.Installation);
+    query.equalTo('user', user);
+
+    query.find({ useMasterKey: true }).then(function(results) {
+        console.log("Successfully retrieved " + results.length + " installations.");
+        // Do something with the returned Parse.Object values
+        for (var i = 0; i < results.length; i++) {
+          var object = results[i];
+          object.addUnique("channels", channelId);
+          object.save(null, {"useMasterKey":true});
+        }
+        res.success('Added channel to installations');
+      }, function(error) {
+        res.error("Error: " + error.code + " " + error.message);
+      });
 });
