@@ -14,7 +14,7 @@ Parse.Cloud.define('sendNewMessagePush', function(req, res) {
     var query = new Parse.Query(Parse.Installation);
     query.equalTo('channels', channel);
     query.notEqualTo('isSilenced', true);
-
+    query.notEqualTo('user', req.user);
     Parse.Push.send({
       where: query,
       data: {
